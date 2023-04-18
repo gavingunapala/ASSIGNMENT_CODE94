@@ -24,6 +24,13 @@ mongoose.connect(URL, {
   console.log("MongoDB connection error: ", err);
 });
 
+// Route
+//Researcher
+const Product = require("./Routes/Products.js");
+app.use("/Product",Product);
+
+
+
 app.listen(PORT, () =>{
   console.log(`Server is up and running on port number: ${PORT}`);
 });
