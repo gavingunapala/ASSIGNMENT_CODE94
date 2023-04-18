@@ -25,7 +25,7 @@ mongoose.connect(URL, {
 });
 
 // Route
-//Researcher
+//Product
 const Product = require("./Routes/Products.js");
 app.use("/Product",Product);
 
