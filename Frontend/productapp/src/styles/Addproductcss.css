@@ -1,3 +1,22 @@
-.marginToAddForm{
+.marginToAddForm {
     margin-top: 20px;
+}
+
+.rowgap {
+    margin-top: 1.6rem;
+}
+
+.lableforTXT {
+    font-size: 1rem;
+    font-weight: bold;
+}
+.discriptiontext{
+    font-size: 0.9rem
+}
+.buttonfloat{
+    float: right;
+    margin-left: 100px;
+}
+.btnSubmit{
+    background-color: #001EB9;;
 }

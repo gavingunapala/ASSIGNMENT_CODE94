@@ -48,7 +48,7 @@ const ProductTable = () => {
                 <tbody>
                     {products.map((product) => {
                         //destructure data
-                        const { SKU, Quantity, id, Image, ProductName, PRICE } = product;
+                        const { SKU, Quantity, _id, Image, ProductName, PRICE } = product;
                         return (
                             <>
                                 <tr>
@@ -57,8 +57,8 @@ const ProductTable = () => {
                                     <td>{ProductName}</td>
                                     <td>{Quantity}</td>
                                     <td>
-                                        <a href="#delete"><img src={deleteicon} alt="Admin avatar" className="rounded-circle " width="30" height="30" /></a>
-                                        <a href="#edit"><img src={editicon} alt="Admin avatar" className="rounded-circle " width="30" height="30" /></a>
+                                        <a href="#edit"><img src={deleteicon} alt="Admin avatar" className="rounded-circle " width="30" height="30" /></a>
+                                        <a href={`/edit/${_id}`}><img src={editicon} alt="Admin avatar" className="rounded-circle " width="30" height="30" /></a>
                                     </td>
                                 </tr>
                             </>
