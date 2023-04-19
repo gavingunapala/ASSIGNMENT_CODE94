@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, {useState, useEffect} from "react";
 import axios from 'axios';
 import '../../styles/Table.css';
 //redux
@@ -12,29 +12,16 @@ import star from '../../assert/img/star.svg';
 import swal from 'sweetalert';
 
 
-const ProductTable = () => {
+const FavoriteTable = () => {
 
-    //variables
-    const products = useSelector((state) => state.allProducts.products);
-    const dispatch = useDispatch();
-
-    //fetch products
-    const fetchAllProducts = async () => {
-        const response = await axios.get(
-            "http://localhost:8070/Product/"
-        ).catch((err) => {
-            console.log(
-                "error", err
-            )
-        })
-        dispatch(setProduct(response.data))
-    }
-
+    const [favProducts, setFavProducts] = useState([]);
 
     useEffect(() => {
-        fetchAllProducts()
-    }, [products])
-
+    //get details from locle storage
+       const favoriteProductIds = JSON.parse(localStorage.getItem('favoriteProducts')) || [];
+       setFavProducts(favoriteProductIds);
+    }, [])
+    console.log(favProducts)
     //delete products 
     const deleteProduct = (data) => {
         swal({
@@ -76,6 +63,7 @@ const ProductTable = () => {
         favoriteProducts.push(data);
         localStorage.setItem('favoriteProducts', JSON.stringify(favoriteProducts));
     }
+    
 
     return (
         <div >
@@ -90,7 +78,7 @@ const ProductTable = () => {
                     </tr>
                 </thead>
                 <tbody>
-                    {products.map((product) => {
+                    {favProducts.map((product) => {
                         //destructure data
                         const { SKU, Quantity, _id, Image, ProductName, PRICE } = product;
 
@@ -118,5 +106,5 @@ const ProductTable = () => {
     );
 };
 
-export default ProductTable;
+export default FavoriteTable;
 

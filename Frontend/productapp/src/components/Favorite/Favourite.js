@@ -1,10 +1,11 @@
 import React, { useEffect } from 'react';
 import '../../styles/Comon.css';
 import axios from 'axios';
-import ProductTable from '../ProductTable/ProductTable';
+
 
 //import SearchBar
 import SearchBar from '../SearchBar/SearchBar';
+import FavoriteTable from './FavoriteTable';
 
 const Favourite = () => {
 
@@ -15,7 +16,7 @@ const Favourite = () => {
             </div>
             <SearchBar />
             {/* calling to the full product table */}
-            <ProductTable />
+            <FavoriteTable />
         </div>
     );
 };
