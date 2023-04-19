@@ -22,3 +22,10 @@ export const removeSelectedProduct =()=>{
         type : ActionTypes.REMOVE_SELECTED_PRODUCT,
     };
 };
+
+//Delete product from database
+export const deleteProduct =()=>{
+    return{
+        type : ActionTypes.DELETE_PRODUCT,
+    };
+};

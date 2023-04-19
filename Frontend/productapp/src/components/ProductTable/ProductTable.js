@@ -3,10 +3,13 @@ import axios from 'axios';
 import '../../styles/Table.css';
 //redux
 import { useDispatch, useSelector } from 'react-redux'
-import { setProduct } from "../../redux/actions/productActions"
+import { setProduct, deleteProduct } from "../../redux/actions/productActions"
 
 import deleteicon from '../../assert/img/delete-icon.svg';
 import editicon from '../../assert/img/edit-icon.svg';
+
+import swal from 'sweetalert';
+
 
 const ProductTable = () => {
 
@@ -29,10 +32,42 @@ const ProductTable = () => {
 
     useEffect(() => {
         fetchAllProducts()
-    }, [])
+    }, [products])
 
     console.log("products : ", products);
 
+    //delete products 
+    const deleteProduct = (data) => {
+        swal({
+          title: "Are you sure?",
+          text: "you will not be able to undo this action if you product",
+          icon: "warning",
+          buttons: true,
+          dangerMode: true,
+        })
+        .then((willDelete) => {
+          if (willDelete) {
+            axios
+              .delete(`http://localhost:8070/Product/delete/${data}`)
+              .then(() => {
+                swal("", {
+                  icon: "success",
+                });
+                // Call the deleteProduct action
+                // dispatch(deleteProduct());
+              })
+              .catch((err) => {
+                swal("Oops! Something went wrong!", err.message, "error");
+              });
+          } else {
+            // swal("Your product is safe!");
+          }
+        });
+      };
+
+
+
+    
     return (
         <div >
             <table class="table">
@@ -49,6 +84,7 @@ const ProductTable = () => {
                     {products.map((product) => {
                         //destructure data
                         const { SKU, Quantity, _id, Image, ProductName, PRICE } = product;
+
                         return (
                             <>
                                 <tr>
@@ -57,7 +93,7 @@ const ProductTable = () => {
                                     <td>{ProductName}</td>
                                     <td>{Quantity}</td>
                                     <td>
-                                        <a href="#edit"><img src={deleteicon} alt="Admin avatar" className="rounded-circle " width="30" height="30" /></a>
+                                        <button onClick={() => deleteProduct(_id)} className='buttonInTable'><img src={deleteicon} alt="Admin avatar" className="rounded-circle " width="30" height="30" /></button >
                                         <a href={`/ProductDetailPage/${_id}`}><img src={editicon} alt="Admin avatar" className="rounded-circle " width="30" height="30" /></a>
                                     </td>
                                 </tr>
