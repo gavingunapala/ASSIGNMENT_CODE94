@@ -81,4 +81,20 @@ router.route("/updateOne/:id").put(async (req, res) => {
     product = await Product.findByIdAndUpdate(req.params.id, data, { new: true });
     res.json(product);
 });
+
+router.get('/search', async (req, res) => {
+    const query = req.query.query;
+    const results = await Product.find({
+        $or: [
+            { SKU: { $regex: query, $options: 'i' } },
+            { Quantity: { $regex: query, $options: 'i' } },
+            { ProductName: { $regex: query, $options: 'i' } },
+            { Description: { $regex: query, $options: 'i' } }
+        ]
+    });
+    res.json(results);
+});
+
+  
+  
 module.exports = router;
