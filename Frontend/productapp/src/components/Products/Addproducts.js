@@ -30,7 +30,7 @@ const Addproducts = () => {
         <div className='marginToAddForm container'>
 
             <div class="row navTitle">
-                <a href='/' class="column left titleProduct Productscolor">  Products &gt; </a>
+                <a href='/' class="column left titleProduct Productscolor">  PRODUCTS &gt; </a>
                 <div class="column right subTitleProduct">
                     add new product
                 </div>

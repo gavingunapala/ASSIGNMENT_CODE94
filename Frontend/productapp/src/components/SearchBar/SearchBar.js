@@ -2,6 +2,8 @@ import React from 'react';
 import '../../styles/Seachbar.css';
 import '../../styles/Comon.css';
 import starred from '../../assert/img/starred.svg';
+import { Link } from 'react-router-dom';
+
 
 const SearchBar = () => {
     return (
@@ -21,11 +23,13 @@ const SearchBar = () => {
                     <a href='/Addproducts' class="btn btn-outline-primary searchBTN">new product</a>
                 </div>
                 <div class="columnSeachbar rightSeachbar">
-                    <div className='border'>
+                <div className='border'>
+                    <Link to='/favourite'>
                         <img src={starred} alt="Admin avatar" className="rounded-circle" width="40" height="40" />
-                    </div>
-
+                    </Link>
                 </div>
+                </div>
+                
             </div>
         </div>
     );
