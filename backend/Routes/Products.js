@@ -38,4 +38,16 @@ router.route("/").get((req, res) => {
         console.log(err)
     })
 })
+
+//get one Product fom id
+//http://localhost:8070/Product/get/:id
+//find one of the Product
+router.route("/get/:id").get((req,res)=>{
+    let id = req.params.id;
+    Product.findById(id).then((Product)=>{
+        res.json(Product)
+    }).catch((err)=>{
+        console.log(err);
+    })
+})
 module.exports = router;
