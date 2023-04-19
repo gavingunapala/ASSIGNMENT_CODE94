@@ -1,32 +1,21 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import '../../styles/Comon.css';
+import axios from 'axios';
+import ProductTable from '../ProductTable/ProductTable';
 
 //import SearchBar
 import SearchBar from '../SearchBar/SearchBar';
 
-//redux
-import {useSelector} from 'react-redux'
-
 const ProductHome = () => {
-
-    //variables
-    const products = useSelector((state)=>state.allProducts.products);
-    console.log(products);
-
-    //destructure
-    const {SKU , Quantity } = products[0];
 
     return (
         <div className='marginToAddForm container'>
             <div class="row navTitle">
-                <div class="column left titleProduct" >
-                    Products
-                </div>
+                <a href='/' class="column left titleProduct Productscolor">Products</a>
             </div>
-            <SearchBar/>
-
-            {SKU}  {Quantity}
-
+            <SearchBar />
+            {/* calling to the full product table */}
+            <ProductTable />
         </div>
     );
 };

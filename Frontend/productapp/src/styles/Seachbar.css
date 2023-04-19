@@ -1,18 +1,18 @@
-.column {
+.columnSeachbar {
     float: left;
     padding: 10px;
   }
   
-  .left {
+  .leftSeachbar {
     width: 55%;
   }
-  .right{
+  .rightSeachbar{
     width: 5%;
   }
-  .space{
+  .spaceSeachbar{
     width: 25%;
   }
-  .middle {
+  .middleSeachbar {
     width: 10%;
   }
   

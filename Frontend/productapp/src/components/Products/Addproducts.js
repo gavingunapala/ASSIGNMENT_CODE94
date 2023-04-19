@@ -6,24 +6,10 @@ const Addproducts = () => {
     return (
         <div className='marginToAddForm container'>
 
-            {/* <div class="row">
-                <div class="col-sm-2 titleProduct">
-                    Products
-                </div>
-                <div class="col-sm-6 subTitleProduct">
-                   
-                </div>
-            </div> */}
-
-
             <div class="row navTitle">
-                <div class="column left titleProduct" >
-                    Products &gt; 
-                  
-                </div>
+                <a href='/' class="column left titleProduct Productscolor">  Products &gt; </a>
                 <div class="column right subTitleProduct">
-                   add new product
-                   
+                    add new product
                 </div>
             </div>
 
