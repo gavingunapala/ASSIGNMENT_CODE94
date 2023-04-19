@@ -58,7 +58,7 @@ const ProductTable = () => {
                                     <td>{Quantity}</td>
                                     <td>
                                         <a href="#edit"><img src={deleteicon} alt="Admin avatar" className="rounded-circle " width="30" height="30" /></a>
-                                        <a href={`/edit/${_id}`}><img src={editicon} alt="Admin avatar" className="rounded-circle " width="30" height="30" /></a>
+                                        <a href={`/ProductDetailPage/${_id}`}><img src={editicon} alt="Admin avatar" className="rounded-circle " width="30" height="30" /></a>
                                     </td>
                                 </tr>
                             </>

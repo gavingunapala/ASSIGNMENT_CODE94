@@ -15,3 +15,10 @@ export const selectedProduct =(products)=>{
         payload:products,
     };
 };
+
+//distory the selected product when back
+export const removeSelectedProduct =()=>{
+    return{
+        type : ActionTypes.REMOVE_SELECTED_PRODUCT,
+    };
+};
