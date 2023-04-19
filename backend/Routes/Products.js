@@ -50,4 +50,18 @@ router.route("/get/:id").get((req,res)=>{
         console.log(err);
     })
 })
+
+
+//delete Product
+//http://localhost:8070/Product/delete/:id
+//Delete Request
+router.route("/delete/:id").delete(async (req, res)=>{
+    let PId = req.params.id;
+
+    await Product.findByIdAndDelete(PId).then(()=>{
+        res.status(200).send({status: "Product deleted"});
+    }).catch((err)=>{
+        console.log(err);
+    })
+})
 module.exports = router;
