@@ -64,4 +64,21 @@ router.route("/delete/:id").delete(async (req, res)=>{
         console.log(err);
     })
 })
+
+
+//update Product
+//http://localhost:8070/Product/updateOne/:id
+//update Request
+router.route("/updateOne/:id").put(async (req, res) => {
+    let product = await Product.findById(req.params.id);
+    const data = {
+        SKU: req.body.SKU || product.SKU,
+        Quantity: req.body.Quantity || product.Quantity,
+        ProductName: req.body.ProductName || product.ProductName,
+        Image: req.body.Image || product.Image,
+        Description: req.body.Description || product.Description,
+    };
+    product = await Product.findByIdAndUpdate(req.params.id, data, { new: true });
+    res.json(product);
+});
 module.exports = router;
