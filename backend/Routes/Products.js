@@ -6,7 +6,7 @@ let Product = require("../Models/Product");
 //./Product/add
 //Post request
 //http://localhost:8070/Product/add
-router.route("/add").post((req,res)=>{
+router.route("/add").post((req, res) => {
     const SKU = req.body.SKU;
     const Quantity = req.body.Quantity;
     const ProductName = req.body.ProductName;
@@ -21,10 +21,21 @@ router.route("/add").post((req,res)=>{
         Description
     })
 
-    newProduct.save().then(()=>{
+    newProduct.save().then(() => {
         res.json("Product Added")
-    }).catch((err)=>{
+    }).catch((err) => {
         console.log(err);
+    })
+})
+
+//get all Product
+//http://localhost:8070/Product/
+//Get Request
+router.route("/").get((req, res) => {
+    Product.find().then((Product) => {
+        res.json(Product)
+    }).catch((err) => {
+        console.log(err)
     })
 })
 module.exports = router;
