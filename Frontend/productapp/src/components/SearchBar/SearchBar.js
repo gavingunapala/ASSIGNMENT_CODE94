@@ -5,7 +5,7 @@ import starred from '../../assert/img/starred.svg';
 
 const SearchBar = () => {
     return (
-        <div className='subContainer serchBarContainer'>
+        <div className='serchBarContainer'>
             <div class="row">
                 <div class="column left" >
                     <form>
