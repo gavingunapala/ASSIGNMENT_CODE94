@@ -1,0 +1,29 @@
+/* Create two unequal columns that floats next to each other */
+.column {
+    float: left;
+    padding: 10px;
+  }
+  .left {
+    width: 23%;
+  }
+  .right {
+    width: 75%;
+  }
+
+.navTitle{
+    margin: 10px;
+}
+  
+.titleProduct{
+    font-size: 2.3rem;
+    font-weight: bold;
+}
+.subTitleProduct{ 
+    font-size: 1.4rem;
+    color: #001EB9;
+}
+
+.subContainer{
+  padding-left: 6.3rem;
+  padding-right: 6.3rem;
+}
