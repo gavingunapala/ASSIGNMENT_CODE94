@@ -1,0 +1,20 @@
+.columnSearchResult {
+    float: left;
+    padding: 10px;
+  }
+  
+  .leftSearchResult {
+    width: 75%;
+  }
+  
+  .rightSearchResult {
+   
+    width: 25%;
+  }
+  
+  /* Clear floats after the columns */
+  .rowSearchResult:after {
+    content: "";
+    display: table;
+    clear: both;
+  }

@@ -1,19 +1,27 @@
-import React from 'react';
+import React, { useState } from 'react';
 import '../../styles/Seachbar.css';
 import '../../styles/Comon.css';
 import starred from '../../assert/img/starred.svg';
-import { Link } from 'react-router-dom';
-
 
 const SearchBar = () => {
+    const [searchQuery, setSearchQuery] = useState('');
+
+    const handleInputChange = (event) => {
+        setSearchQuery(event.target.value);
+    }
+
+    const handleSearch = () => {
+        window.location.replace(`/SearchResults?query=${searchQuery}`);
+    }
+
     return (
         <div className='serchBarContainer'>
             <div class="row">
                 <div class="columnSeachbar leftSeachbar" >
                     <form>
                         <div class="input-group">
-                            <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
-                            <button type="button" class="btn btn-outline-primary searchBTN">search</button>
+                            <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" value={searchQuery} onChange={handleInputChange} />
+                            <button type="button" class="btn btn-outline-primary searchBTN" onClick={handleSearch}>search</button>
                         </div>
                     </form>
                 </div>
@@ -23,13 +31,12 @@ const SearchBar = () => {
                     <a href='/Addproducts' class="btn btn-outline-primary searchBTN">new product</a>
                 </div>
                 <div class="columnSeachbar rightSeachbar">
-                <div className='border'>
-                    <Link to='/favourite'>
-                        <img src={starred} alt="Admin avatar" className="rounded-circle" width="40" height="40" />
-                    </Link>
+                    <div className='border'>
+                        <a href='/favourite'>
+                            <img src={starred} alt="Admin avatar" className="rounded-circle" width="40" height="40" />
+                        </a>
+                    </div>
                 </div>
-                </div>
-                
             </div>
         </div>
     );

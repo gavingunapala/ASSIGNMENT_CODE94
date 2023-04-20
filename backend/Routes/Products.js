@@ -2,31 +2,64 @@ const router = require("express").Router();
 const { request } = require("express");
 let Product = require("../Models/Product");
 
-//add data to admin table
-//./Product/add
-//Post request
-//http://localhost:8070/Product/add
-router.route("/add").post((req, res) => {
-    const SKU = req.body.SKU;
-    const Quantity = req.body.Quantity;
-    const ProductName = req.body.ProductName;
-    const Image = req.body.Image;
-    const Description = req.body.Description;
+// //add data to admin table
+// //./Product/add
+// //Post request
+// //http://localhost:8070/Product/add
+// router.route("/add").post((req, res) => {
+//     const SKU = req.body.SKU;
+//     const Quantity = req.body.Quantity;
+//     const ProductName = req.body.ProductName;
+//     const Image = req.body.Image;
+//     const Description = req.body.Description;
 
-    const newProduct = new Product({
-        SKU,
-        Quantity,
-        ProductName,
-        Image,
-        Description
-    })
+//     const newProduct = new Product({
+//         SKU,
+//         Quantity,
+//         ProductName,
+//         Image,
+//         Description
+//     })
 
-    newProduct.save().then(() => {
-        res.json("Product Added")
-    }).catch((err) => {
-        console.log(err);
-    })
-})
+//     newProduct.save().then(() => {
+//         res.json("Product Added")
+//     }).catch((err) => {
+//         console.log(err);
+//     })
+// })
+
+const multer = require('multer');
+
+const storage = multer.diskStorage({
+  destination: function(req, file, cb) {
+    cb(null, 'public/images/');
+  },
+  filename: function(req, file, cb) {
+    cb(null, Date.now() + '-' + file.originalname);
+  }
+});
+
+const upload = multer({ storage: storage });
+
+router.route('/add').post(upload.single('Image'), (req, res) => {
+  const SKU = req.body.SKU;
+  const Quantity = req.body.Quantity;
+  const ProductName = req.body.ProductName;
+  const Image = req.file.path; // image path
+  const Description = req.body.Description;
+
+  const newProduct = new Product({
+    SKU,
+    Quantity,
+    ProductName,
+    Image,
+    Description
+  });
+
+  newProduct.save()
+    .then(() => res.json('Product added!'))
+    .catch(err => res.status(400).json('Error: ' + err));
+});
 
 //get all Product
 //http://localhost:8070/Product/
