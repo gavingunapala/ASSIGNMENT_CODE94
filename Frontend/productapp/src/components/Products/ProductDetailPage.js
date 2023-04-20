@@ -125,6 +125,15 @@ const ProductDetailPage = () => {
                         onChange={e => setDescription(e.target.value)}
                     ></textarea>
                 </div>
+                <div class="mb-3">
+                    <label for="formFile" class="form-label">product Images</label>
+                    <br />
+                    <label class="form-label ashcolor discriptiontext" for="textAreaExampl ">JPG , SVG or GIF</label>
+                    <input class="form-control" type="file" id="formFile"
+                    name="Image"
+                    // value={Image}
+                    onChange={e => setImage(e.target.value)} />
+                </div>
                 <div class="form-group col-md-2 rowgap buttonfloat">
                     <button class="btn btn-primary btnSubmit" type="submit"   onClick={(e) => ChangeOnClick(e)}>Save Changes</button>
                 </div>
